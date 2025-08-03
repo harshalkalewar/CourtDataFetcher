@@ -14,11 +14,12 @@ class Scraper:
         options = webdriver.ChromeOptions()
         options.add_argument("--headless=new")
         self.driver = webdriver.Chrome(options=options)
+        self.link = "https://delhihighcourt.nic.in/app/get-case-type-status"
 
     def get_case_details(self, case_type_input, case_number_input, year_input):
 
         
-        self.driver.get("https://delhihighcourt.nic.in/app/get-case-type-status")
+        self.driver.get(self.link)
 
         WebDriverWait(self.driver, 10).until(
             ec.presence_of_element_located((By.ID, "captcha-code"))
@@ -33,16 +34,16 @@ class Scraper:
         captcha_input = self.driver.find_element(By.ID, "captchaInput")
 
         # Selecting Case Type
-        select_object1 = Select(case_type)
-        select_object1.select_by_value(case_type_input)
+        select_casetype = Select(case_type)
+        select_casetype.select_by_value(case_type_input)
 
         # Sending case number
         case_number.send_keys(case_number_input)
         captcha_input.send_keys(captcha_code)
 
         #Selecting Case Year
-        select_object2 = Select(year)
-        select_object2.select_by_value(year_input)
+        select_year = Select(year)
+        select_year.select_by_value(year_input)
 
 
         submit_button = self.driver.find_element(By.ID, "search")

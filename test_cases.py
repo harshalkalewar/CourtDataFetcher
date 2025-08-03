@@ -20,7 +20,7 @@ class CourtAppTestCase(unittest.TestCase):
             db.drop_all()
 
 
-    def test_FetchCaseDetails_ReturnsDataSuccessfully(self):
+    def test_fetch_case_details_returns_data_successfully(self):
         # Post a case that exists
         response = self.app.post('/', data={
             'case_type': 'CS(COMM)',
@@ -31,7 +31,7 @@ class CourtAppTestCase(unittest.TestCase):
         self.assertIn(b'CS(COMM)', response.data)   
 
 
-    def test_FetchCaseDetails_ReturnsCachedCase(self):
+    def test_fetch_case_details_returns_cached_data(self):
 
         self.app.post('/', data={
             'case_type': 'CS(COMM)',
@@ -48,7 +48,7 @@ class CourtAppTestCase(unittest.TestCase):
         self.assertIn(b'CS(COMM)', response.data)         
 
 
-    def test_FetchCaseDetails_ThrowsInvalidCaseException(self):
+    def test_fetch_case_details_throws_invalid_case_exception(self):
         # Post a case that doesn't exist
         response = self.app.post('/', data={
             'case_type': 'ABC',

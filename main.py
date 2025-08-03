@@ -60,3 +60,4 @@ def fetch_case_details():
     return render_template('case_input_form.html')
 
 
+
