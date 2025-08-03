@@ -1,17 +1,18 @@
-# Court Data Fetcher (Flask + SQLite)
+# Delhi High Court Case Details Scraper
 
-This project lets users fetch case details from a scraping function (`scraper.py`) using a clean Flask web interface. It stores results in SQLite and displays them using a responsive HTML template.
+This is a Python Flask application that allows users to fetch case details from the Delhi High Court website using a clean Flask web interface. It stores results in SQLite and displays them using a responsive HTML template.
 
 ---
 
 ## 🔧 Features
 
 - ✅ Submit case type, number, and year via web form
-- ✅ Scrapes case info using `fetch_case_details()`
+- ✅ Scrapes case data from the [Delhi High Court](https://delhihighcourt.nic.in/) 
 - ✅ Caches and stores results in SQLite
 - ✅ Responsive and styled result page
 - ✅ Fallback handling for invalid case input
 - ✅ Built-in test cases for validation
+- ✅ Download latest order PDFs
 
 ---
 
