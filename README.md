@@ -30,12 +30,12 @@ pip install -r requirements.txt
 
 ## 🚀 Run Locally
 
-- python app.py
+- flask --app run main
 - Visit http://localhost:5000 to try it out.
 
 ## 🧪 Run Tests
 
-- python test_app.py
+- python test_cases.py
 
 
 ## 📝 Folder Structure
