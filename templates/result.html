@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Case Details Result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 25px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            text-align: left;
+            padding: 14px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+        td a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        td a:hover {
+            text-decoration: underline;
+        }
+        .error {
+            color: #cc0000;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .button {
+            margin-top: 30px;
+        }
+        .button a {
+            display: inline-block;
+            background: #007BFF;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+        }
+        .button a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if result and result.orders_link %}
+            <h2>Case Details</h2>
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Case</td>
+                    <td>{{ result.case_type }} {{ result.case_number }}/{{ result.case_year }}</td>
+                </tr>
+                <tr>
+                    <td>Orders Link</td>
+                    <td><a href="{{ result.orders_link }}" target="_blank">View Orders</a></td>
+                </tr>
+                <tr>
+                    <td>Petitioner</td>
+                    <td>{{ result.petitioner }}</td>
+                </tr>
+                <tr>
+                    <td>Respondent</td>
+                    <td>{{ result.respondent }}</td>
+                </tr>
+                <tr>
+                    <td>Next Date</td>
+                    <td>{{ result.next_date }}</td>
+                </tr>
+                <tr>
+                    <td>Last Date</td>
+                    <td>{{ result.last_date }}</td>
+                </tr>
+                <tr>
+                    <td>Court Number</td>
+                    <td>{{ result.court_number }}</td>
+                </tr>
+                <tr>
+                    <td>Latest Order</td>
+                    <td><a href="{{ result.latest_order_link }}" target="_blank">Download PDF</a></td>
+                </tr>
+            </table>
+        {% else %}
+            <h2>❌ Case Details Not Found</h2>
+            <p class="error">It looks like the case could not be retrieved. This might be due to:</p>
+            <ul style="text-align:left; max-width: 600px; margin: 20px auto;">
+                <li>Invalid case number or format</li>
+                <li>Case not available on the High Court website</li>
+            </ul>
+        {% endif %}
+        <div class="button">
+            <a href="/">Try Another Case</a>
+        </div>
+    </div>
+</body>
+</html>
